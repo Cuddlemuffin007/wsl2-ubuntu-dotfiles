@@ -1,0 +1,9 @@
+# Ignore environment stuff created by direnv
+.envrc
+.direnv
+
+# OSX
+.DS_Store
+
+# DBs
+db.sqlite3
