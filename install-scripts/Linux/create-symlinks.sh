@@ -41,6 +41,7 @@ ln -sf $dotfiles_dir/linux-tmux ~/.tmux
 ln -sf $dotfiles_dir/zsh/zsh_prompt ~/.zsh_prompt
 ln -sf $dotfiles_dir/zsh/zshrc ~/.zshrc
 ln -sf $dotfiles_dir/config ~/.config
+ln -sf $dotfiles_dir/direnv ~/.config/direnv
 ln -sf $dotfiles_dir/custom-configs/custom-snips ~/.vim/custom-snips
 
 if [ -n "$(find $dotfiles_dir/custom-configs -name gitconfig)" ]; then

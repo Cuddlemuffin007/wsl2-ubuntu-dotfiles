@@ -55,9 +55,8 @@ fi
 # Install git-completion and git-prompt
 # ---
 cd ~/
-curl -OL https://github.com/git/git/raw/master/contrib/completion/git-completion.bash
-mv ~/git-completion.bash ~/.git-completion.bash
-curl https://raw.github.com/git/git/master/contrib/completion/git-prompt.sh -o ~/.git-prompt.sh
+curl https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash -o ~/.git-completion.bash
+curl https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh -o ~/.git-prompt.sh
 echo "git-completion and git-prompt Installed and Configured" >> $log_file
 
 # ---
@@ -91,6 +90,13 @@ else
     echo "npm FAILED TO INSTALL!!!" >> $log_file
 fi
 
+sudo npm install -g yarn
+if type -p yarn > /dev/null; then
+    echo "yarn Installed" >> $log_file
+else
+    echo "yarn FAILED TO INSTALL!!!" >> $log_file
+fi
+
 sudo npm install -g jshint
 if type -p jshint > /dev/null; then
     echo "jshint Installed" >> $log_file
@@ -121,32 +127,25 @@ else
     echo "pip FAILED TO INSTALL!!!" >> $log_file
 fi
 
-sudo apt-get -y libssl-dev \
+sudo apt-get -y install make \
+    build-essential \
+    libssl-dev \
     zlib1g-dev \
     libbz2-dev \
     libreadline-dev \
     libsqlite3-dev \
     llvm \
-    libncurses5-dev \
     libncursesw5-dev \
-    xzutils \
+    xz-utils \
     tk-dev \
-    libgdmb-dev \
-    lzma-dev \
-    tcl-dev \
     libxml2-dev \
     libxmlsec1-dev \
     libffi-dev \
-    liblzma-dev \
-    build-essential \
-    python-openssl
+    liblzma-dev
 
-git clone git@github.com/pyenv/pyenv.git $HOME/.pyenv
-if type -p pyenv > /dev/null; then
-    echo "pyenv Installed" >> $log_file
-else
-    echo "pyenv FAILED TO INSTALL!!!" >> $log_file
-fi
+rm -rf ~/.pyenv
+curl https://raw.githubusercontent.com/pyenv/pyenv-installer/master/bin/pyenv-installer | bash
+echo "pyenv Installed" >> $log_file
 
 sudo apt-get -y install bpython
 if type -p bpython > /dev/null; then

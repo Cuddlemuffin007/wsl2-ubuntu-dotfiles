@@ -202,7 +202,7 @@ done
 # >>1
 
 # Source Syntaxhighlighting <<1
-source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source $(dpkg -L zsh-syntax-highlighting | grep -E "zsh-syntax-highlighting\.zsh")
 # >>1
 
 # GoLang setup <<1
