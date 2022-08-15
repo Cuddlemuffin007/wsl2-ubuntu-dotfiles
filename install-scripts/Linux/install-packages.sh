@@ -16,6 +16,13 @@ else
     echo "Vim FAILED TO INSTALL!!!" >> $log_file
 fi
 
+sudo apt-get -y install jq
+if type -p jq > /dev/null; then
+    echo "jq Installed" >> $log_file
+else
+    echo "jq FAILED TO INSTALL!!!" >> $log_file
+fi
+
 sudo apt-get -y install keepassx
 if type -p keepassx > /dev/null; then
     echo "Keepassx Installed" >> $log_file
