@@ -39,7 +39,7 @@ layout_poetry() {
   fi
 
   # create venv if it doesn't exist
-  poetry run true
+  poetry env use $(pyenv which python)
 
   export VIRTUAL_ENV=$(poetry env info --path)
   export POETRY_ACTIVE=1
