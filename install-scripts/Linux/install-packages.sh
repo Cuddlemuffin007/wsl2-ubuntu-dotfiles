@@ -205,8 +205,8 @@ else
     echo "flake8 FAILED TO INSTALL!!!" >> $log_file
 fi
 
-sudo pip install poetry==1.1.11
-if pip freeze | grep poetry > /dev/null; then
+curl -sSL https://install.python-poetry.org | python3 -
+if $HOME/.local/bin/poetry --version > /dev/null; then
     echo "poetry Installed" >> $log_file
 else
     echo "poetry FAILED TO INSTALL!!!" >> $log_file

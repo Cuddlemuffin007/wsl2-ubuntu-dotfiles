@@ -7,3 +7,10 @@
 
 # DBs
 db.sqlite3
+
+# terraform artifacts
+terraform/**/*tfplan*
+terraform/**/.terraform
+terraform/**/*.tfstate*
+# but not the lock file
+!terraform/**/.terraform.lock.hcl

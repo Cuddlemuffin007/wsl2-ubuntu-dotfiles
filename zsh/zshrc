@@ -205,6 +205,15 @@ done
 source $(dpkg -L zsh-syntax-highlighting | grep -E "zsh-syntax-highlighting\.zsh")
 # >>1
 
+# Poetry setup <<1
+POETRY_DIR="$HOME/.local/bin"
+export PATH="$POETRY_DIR:$PATH"
+if ! [[ -d $HOME/.zfunc ]]; then
+    mkdir -p $HOME/.zfunc
+    $POETRY_DIR/poetry completions zsh > $HOME/.zfunc/_poetry
+fi
+# >>1
+
 # GoLang setup <<1
 export PATH=$PATH:/home/brennon/.go/bin
 export GOPATH=/home/brennon/go
@@ -231,12 +240,14 @@ compinit
 autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /usr/bin/terraform terraform
 
-export PATH="$HOME/.poetry/bin:$PATH"
-
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # add yarn global packages to path
 export PATH="$(yarn global bin):$PATH"
+# add tfenv to path
+export PATH="$PATH:$HOME/.tfenv/bin"
+# configure docker host for WSL1
+export DOCKER_HOST=tcp://localhost:2375
 # EOF
